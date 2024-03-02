@@ -31,7 +31,7 @@ export const jwtParse = async (
 
   // Bearer lshdflshdjkhvjkshdjkvh34h5k3h54jkh
   const token = authorization.split(" ")[1];
-  console.log(token.toString);
+  console.log(token);
 
   try {
     const decoded = jwt.decode(token) as jwt.JwtPayload;

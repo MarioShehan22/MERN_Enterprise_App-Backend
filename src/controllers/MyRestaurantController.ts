@@ -19,6 +19,7 @@ const getMyRestaurant = async (req: Request, res: Response) => {
   }
 };
 
+//Post Restaurant
 const createMyRestaurant = async (req: Request, res: Response) => {
   try {
     const existingRestaurant = await Restaurant.findOne({ user: req.userId });
@@ -26,9 +27,9 @@ const createMyRestaurant = async (req: Request, res: Response) => {
     if (existingRestaurant) {
       return res.status(409).json({ message: "User restaurant already exists" });
     }
-    const imageUrl = await uploadImage(req.file as Express.Multer.File);
 
-    //value Assign from Restaurant instance
+    const imageUrl = await uploadImage(req.file as Express.Multer.File);
+  //value Assign from Restaurant instance
     const restaurant = new Restaurant(req.body);
     restaurant.imageUrl = imageUrl;
     restaurant.user = new mongoose.Types.ObjectId(req.userId);
