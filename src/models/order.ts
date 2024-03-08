@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
-  restaurant: { type: mongoose.Schema.Types.ObjectId, ref: "Restaurant" },
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  restaurant: { type: mongoose.Schema.Types.ObjectId, ref: "Restaurant" },//link to Restaurant Document to order Document
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },//link to User Document to order Document
   deliveryDetails: {
     email: { type: String, required: true },
     name: { type: String, required: true },

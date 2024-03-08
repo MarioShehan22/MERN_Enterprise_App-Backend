@@ -26,7 +26,7 @@ const searchRestaurant = async (req: Request, res: Response) => {
     const sortOption = (req.query.sortOption as string) || "lastUpdated";
     const page = parseInt(req.query.page as string) || 1;
 
-    let query: any = {};
+    let query: any = {}; // initializes an empty object named query to store MongoDB query criteria.
 
     query["city"] = new RegExp(city, "i");
     const cityCheck = await Restaurant.countDocuments(query);
@@ -70,7 +70,7 @@ const searchRestaurant = async (req: Request, res: Response) => {
 
     const response = {data: restaurants,pagination: { total, page, pages: Math.ceil(total / pageSize),},};//Example 50 results, pageSize = 10 > pages 5
 
-    res.json(response);
+    res.json(response); //This line sends the constructed response as JSON to the client.
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Something went wrong" });
